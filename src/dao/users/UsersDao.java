@@ -11,13 +11,13 @@ public interface UsersDao {
 
    List<Users> getAll();
 
-   Optional<Users> findById(int var1) throws Throwable;
+   Optional<Users> findById(int user_id) throws Throwable;
 
-   boolean update(Users var1) throws Throwable;
+   boolean update(Users user) throws Throwable;
 
-   boolean delete(int var1) throws Throwable;
+   boolean delete(int user_id) throws Throwable;
 
-   Optional<Users> add(Users var1) throws Throwable;
+   Optional<Users> add(Users user) throws Throwable;
 
-   Optional<Users> findByUsername(String var1) throws Throwable;
+   Optional<Users> findByUsername(String username) throws Throwable;
 }

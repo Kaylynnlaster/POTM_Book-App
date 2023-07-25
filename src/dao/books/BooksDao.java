@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import dao.users.Users;
+
 public interface BooksDao {
    void establishConnection() throws ClassNotFoundException, SQLException;
 
@@ -11,13 +13,13 @@ public interface BooksDao {
 
    List<Books> getAll();
 
-   Optional<Books> findById(int var1);
+   Optional<Books> findById(int book_id);
 
-   boolean update(Books var1);
+   boolean update(Books book);
 
-   boolean delete(int var1);
+   boolean delete(int book_id);
 
-   Books add(Books var1);
+   Optional<Books> add(Books book);
 
-   List<Books> findByBook(String var1);
+   List<Books> findByTitle(String title);
 }
