@@ -99,8 +99,6 @@ public class UsersDaoImpl implements UsersDao {
 		e.printStackTrace();
 	}
       return true;
-
-   
    }
 
    public boolean delete(int id){
