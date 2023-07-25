@@ -89,7 +89,9 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
               
               while(rs.next()) {
            	   users_books = (new Users_Books(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+           	   return users_books;
            	   }	
+              
               } catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
