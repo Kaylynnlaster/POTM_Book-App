@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class ConnectionManager {
 	private static final String URL = "jdbc:mysql://localhost:3306/book_progress";
 	private static final String USERNAME = "root";
-	private static final String PASSWORD = "root";
+	private static final String PASSWORD = "JavaDev23!#%";
 	
 	private static Connection connection = null;
 	
