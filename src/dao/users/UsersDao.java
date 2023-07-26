@@ -10,13 +10,13 @@ public interface UsersDao {
 
    List<Users> getAll();
 
-   Users findById(int user_id) throws Throwable;
+   Users findById(int user_id);
 
-   boolean update(Users user) throws Throwable;
+   boolean update(Users user);
 
-   boolean delete(int user_id) throws Throwable;
+   boolean delete(int user_id);
 
-   Users add(Users user) throws Throwable;
+   Users add(Users user);
 
-   Users findByUsername(String username) throws Throwable;
+   Users findByUsername(String username);
 }

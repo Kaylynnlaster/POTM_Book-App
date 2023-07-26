@@ -5,9 +5,7 @@ public class Users_Books {
 	private int user_id;
 	private int book_id;
 	private int pages_read;
-	
-	
-	
+
 	public Users_Books(int user_id, int book_id, int pages_read) {
 		this.user_id = user_id;
 		this.book_id = book_id;
@@ -31,8 +29,5 @@ public class Users_Books {
 	public void setPages_read(int pages_read) {
 		this.pages_read = pages_read;
 	}
-	
-	
-	
 
 }
