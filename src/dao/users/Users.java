@@ -6,8 +6,16 @@ public class Users {
    private String last_name;
    private String user_name;
    private String user_pswd;
+   private boolean authenticate = false;
 
-   public Users(int user_id, String first_name, String last_name, String user_name, String user_pswd) {
+public boolean isAuthenticate() {
+	return authenticate;
+}
+public void setAuthenticate(boolean authenticate) {
+	this.authenticate = authenticate;
+}
+
+public Users(int user_id, String first_name, String last_name, String user_name, String user_pswd) {
       this.user_id = user_id;
       this.first_name = first_name;
       this.last_name = last_name;
