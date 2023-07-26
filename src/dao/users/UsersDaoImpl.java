@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class UsersDaoImpl implements UsersDao {
    private Connection connection = null;
@@ -44,41 +43,41 @@ public class UsersDaoImpl implements UsersDao {
       return users;
    }
 
-   public Optional<Users> findById(int id) {
+   public Users findById(int id) {
       
 	  String sql = "SELECT * FROM users WHERE user_id = ?";
       try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
                pstmt.setInt(1, id);
                ResultSet rs = pstmt.executeQuery();
                if (!rs.next()) {
-                  return Optional.empty();
+                  return null;
                }
 
                Users user = new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-               return Optional.of(user);
+               return user;
             } catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	return Optional.empty();
+	return null;
       
    }
 
-   public Optional<Users> findByUsername(String username){
+   public Users findByUsername(String username){
       String sql = "SELECT * FROM users WHERE user_name = ?";
        
       try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
                pstmt.setString(4, username);
                ResultSet rs = pstmt.executeQuery();
                if (!rs.next()) {
-                  return Optional.empty();
+                  return null;
                }    
                Users user = new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-               return Optional.of(user);
+               return user;
       } catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();}
-      return Optional.empty();
+      return null;
    }
 
    public boolean update(Users user) {
@@ -133,10 +132,10 @@ public class UsersDaoImpl implements UsersDao {
     }
 
 
-   public Optional<Users> add(Users user){
+   public Users add(Users user){
 
          if (this.exists(user.getUser_name())) {
-            return Optional.empty();
+            return null;
          }
 
       String sql = "INSERT INTO users (first_name, last_name, user_name, user_pswd) VALUES (?, ?, ?, ?);";
@@ -154,6 +153,6 @@ public class UsersDaoImpl implements UsersDao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
-      return Optional.of(user);
+      return user;
    }
 }
