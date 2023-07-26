@@ -67,7 +67,7 @@ public class UsersDaoImpl implements UsersDao {
       String sql = "SELECT * FROM users WHERE user_name = ?";
        
       try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
-               pstmt.setString(4, username);
+               pstmt.setString(1, username);
                ResultSet rs = pstmt.executeQuery();
                if (!rs.next()) {
                   return null;

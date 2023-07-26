@@ -71,6 +71,6 @@ public Users(int user_id, String first_name, String last_name, String user_name,
    }
 
    public String toString() {
-      return "\nuser_id=" + this.user_id + ", first_name=" + this.first_name + ", last_name=" + this.last_name + ", user_name=" + this.user_name;
+      return "\nuser_id=" + this.user_id + ", first_name=" + this.first_name + ", last_name=" + this.last_name + ", user_name=" + this.user_name + ", password=" + this.user_pswd;
    }
 }

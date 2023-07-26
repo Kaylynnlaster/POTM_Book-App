@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Services.UserLogin;
+import services.UserLogin;
 import dao.users.Users;
 
 
@@ -50,8 +50,9 @@ public class LoginForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String email = tfEmail.getText();
                 String password = String.valueOf(pfPassword.getPassword());
+                System.out.println("LoginForm email:  " + email + "LoginForm password:  " + password);
                 
-                Users currUser = UserLogin.getAuthenticatedUser(email, password);
+                Users currUser = UserLogin.login(email, password);
 
                 if(currUser != null){
                     mainFrame userList = new mainFrame();
