@@ -9,11 +9,11 @@ public class UserLogin {
 
 	public static Users user;
 	public static UsersDao userDao;
-	
+
 	public static Users login(String username, String password) {
 		System.out.println("UserLogin method  ");
 		System.out.println("LoginForm email:  " + username + "LoginForm password:  " + password);
-		
+
 		userDao = new UsersDaoImpl();
 		try {
 			userDao.establishConnection();
@@ -24,13 +24,12 @@ public class UserLogin {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
 			user = userDao.findByUsername(username);
-			
+
 			System.out.println("Password from user " + password + " Password from object " + user.getUser_pswd());
-			if (user == null)
-			{
+			if (user == null) {
 				return null;
 			}
 
@@ -43,14 +42,11 @@ public class UserLogin {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	public static Users logout(String username)
-	{
+
+	public static Users logout(String username) {
 		return null;
 	}
-	
-		
-    
 }
