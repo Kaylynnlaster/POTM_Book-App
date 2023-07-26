@@ -47,7 +47,7 @@ public class BooksDaoImpl implements BooksDao {
    }
 
    public Books findById(int id) {
-		  String sql = "SELECT * FROM books WHERE user_id = ?";
+		  String sql = "SELECT * FROM books WHERE book_id = ?";
 	      try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
 	               pstmt.setInt(1, id);
 	               ResultSet rs = pstmt.executeQuery();
