@@ -2,9 +2,6 @@ package dao.users_books;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
-
-import dao.users_books.Users_Books;
 
 public interface UsersBooksDao {
 	   void establishConnection() throws ClassNotFoundException, SQLException;
@@ -21,6 +18,6 @@ public interface UsersBooksDao {
 
 	   boolean delete(int userId, int bookId);
 
-	   Optional<Users_Books> add(int user_id, int book_id);
+	   Users_Books add(int user_id, int book_id);
 
 }

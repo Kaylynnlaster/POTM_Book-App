@@ -1,7 +1,6 @@
 package dao.books;
 
 import connection.ConnectionManager;
-import dao.users.Users;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class BooksDaoImpl implements BooksDao {
    private Connection connection = null;
@@ -48,23 +46,23 @@ public class BooksDaoImpl implements BooksDao {
       return books;
    }
 
-   public Optional<Books> findById(int id) {
+   public Books findById(int id) {
 		  String sql = "SELECT * FROM books WHERE user_id = ?";
 	      try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
 	               pstmt.setInt(1, id);
 	               ResultSet rs = pstmt.executeQuery();
 	               if (!rs.next()) {
-	                  return Optional.empty();
+	                  return null;
 	               }
 
 	               Books book = new Books(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
-	               return Optional.of(book);
+	               return book;
 	            } catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}	   
 	   
-      return Optional.empty();
+      return null;
    }
    
 
@@ -118,10 +116,10 @@ public class BooksDaoImpl implements BooksDao {
 	         return true;
 	    }
 
-   public Optional<Books> add(Books book) {
+   public Books add(Books book) {
 	   
        if (this.exists(book.getTitle())) {
-           return Optional.empty();
+           return null;
         }
 
      String sql = "INSERT INTO users (first_name, last_name, user_name, user_pswd) VALUES (?, ?, ?, ?);";
@@ -139,7 +137,7 @@ public class BooksDaoImpl implements BooksDao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
-     return Optional.of(book);
+     return null;
    }
 
    public List<Books> findByTitle(String title) {

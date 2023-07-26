@@ -13,13 +13,13 @@ public interface BooksDao {
 
    List<Books> getAll();
 
-   Optional<Books> findById(int book_id);
+   Books findById(int book_id);
 
    boolean update(Books book);
 
    boolean delete(int book_id);
 
-   Optional<Books> add(Books book);
+   Books add(Books book);
 
    List<Books> findByTitle(String title);
 }
