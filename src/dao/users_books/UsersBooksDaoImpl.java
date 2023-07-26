@@ -89,7 +89,9 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
               
               while(rs.next()) {
            	   users_books = (new Users_Books(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+           	   return users_books;
            	   }	
+              
               } catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -149,10 +151,10 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 		         return true;
 		    }
 	@Override
-	public Optional<Users_Books> add(int userId, int bookId) {
+	public Users_Books add(int userId, int bookId) {
 	
         if (this.exists(userId, bookId)) {
-            return Optional.empty();
+            return null;
         }
 		 String sql = "INSERT INTO users_books (user_id, book_id, pages_read) VALUES (?, ?, ?);";
 		 try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
@@ -165,7 +167,7 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			return Optional.of( new Users_Books(userId, bookId, 0));
+			return ( new Users_Books(userId, bookId, 0));
 	}
 
 }
