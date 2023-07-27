@@ -2,9 +2,6 @@ package dao.books;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
-
-import dao.users.Users;
 
 public interface BooksDao {
    void establishConnection() throws ClassNotFoundException, SQLException;

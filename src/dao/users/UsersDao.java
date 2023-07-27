@@ -3,6 +3,13 @@ package dao.users;
 import java.sql.SQLException;
 import java.util.List;
 
+import Exceptions.DuplicatedPasswordException;
+import Exceptions.DuplicatedUserNameException;
+import Exceptions.UserIdNotFoundException;
+import Exceptions.UserNotFoundException;
+import Exceptions.UserPswdNotFoundException;
+import Exceptions.UsernameNotFoundException;
+
 public interface UsersDao {
    void establishConnection() throws ClassNotFoundException, SQLException;
 
@@ -10,13 +17,13 @@ public interface UsersDao {
 
    List<Users> getAll();
 
-   Users findById(int user_id) throws Throwable;
+   Users findById(int user_id) throws UserIdNotFoundException;
 
-   boolean update(Users user) throws Throwable;
+   boolean update(Users user) throws UserNotFoundException;
 
-   boolean delete(int user_id) throws Throwable;
+   boolean delete(int user_id) throws UserIdNotFoundException;
 
-   Users add(Users user) throws Throwable;
+   Users add(Users user) throws UsernameNotFoundException, UserPswdNotFoundException, DuplicatedUserNameException, DuplicatedPasswordException;
 
-   Users findByUsername(String username) throws Throwable;
+   Users findByUsername(String username) throws UsernameNotFoundException;
 }
