@@ -35,7 +35,7 @@ public class mainFrame extends JFrame{
     inProgress.setFont(mainFont);
 
     
-    //progress book list
+    // progress book list
     // System.out.println("before first list created");
     // List<MasterTable> inProgressBooks;
 	// inProgressBooks = UserBooks.getProgress(currUser.getUserId());
@@ -48,7 +48,8 @@ public class mainFrame extends JFrame{
     //completed list
    
     List<MasterTable> completedBooks;
-    completedBooks = UserBooks.getCompleted(currUser.getUserId());
+    // completedBooks = UserBooks.getCompleted(currUser.getUserId());
+    completedBooks = new ArrayList<>();
     System.out.println("after first list created");
 
 

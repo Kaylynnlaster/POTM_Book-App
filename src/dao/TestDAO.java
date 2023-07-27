@@ -44,8 +44,8 @@ public class TestDAO {
 			// System.out.println(usersDao.getAll());
 			// System.out.println(usersDao.findBooksByUserId(11));
 			// System.out.println(usersDao.findUsersByBookId(11));
-			// System.out.println(usersDao.findByUserIdBookId(1,3));
-			// usersDao.updatePagesRead(1, 2, 281);
+			System.out.println(usersDao.findByUserIdBookId(1,4));
+			usersDao.updatePagesRead(1, 4, 281);
 			// usersDao.delete(1,3);
 			// usersDao.add(1, 3);
 

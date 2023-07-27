@@ -89,6 +89,7 @@ public class UserBooks {
 		
 		return planning;
 	}
+	
 	public static List<MasterTable> getProgress(int userId) throws UserIdNotFoundException, BookIdNotFoundException {
 		usersDao = new UsersDaoImpl();
 		booksDao = new BooksDaoImpl();
@@ -137,14 +138,16 @@ public class UserBooks {
 		}
 		userbooks = usersbooksDao.findBooksByUserId(userId);
 		for (UsersBooks b : userbooks) {
-		Books current_book = booksDao.findById(book.getBookId());
-		Users current_user = usersDao.findById(userId);
-		if (b.getPagesRead() == book.getNumOfPages()) {
-			completed.add(new MasterTable(current_book, current_user, b)); }
+			Books current_book = booksDao.findById(book.getBookId());
+			Users current_user = usersDao.findById(userId);
+			if (b.getPagesRead() == book.getNumOfPages()) {
+				completed.add(new MasterTable(current_book, current_user, b)); 
+			}
 		}
 		
 		return completed;
 	}
+
 	public static UsersBooks newBook(int userId, int bookId) throws DuplicatedUserIdBookIdException
 	{
 		usersbooksDao = new UsersBooksDaoImpl();

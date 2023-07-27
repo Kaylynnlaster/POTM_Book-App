@@ -26,8 +26,9 @@ values
 
 insert into users_books(user_id, book_id, pages_read) 
 values
-(1, 1, 0),
+(1, 1, 180),
 (1, 2, 200),
+(1, 3, 0),
 (2, 3, 50),
 (2, 4, 279),
 (3, 1, 0),
