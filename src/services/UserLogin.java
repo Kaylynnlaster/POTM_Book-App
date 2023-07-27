@@ -10,6 +10,8 @@ public class UserLogin {
 	public static UsersDao userDao;
 	
 	public static Users login(String username, String password) {
+		System.out.println("UserLogin method  ");
+		System.out.println("LoginForm email:  " + username + "LoginForm password:  " + password);
 		
 		userDao = new UsersDaoImpl();
 		try {
@@ -24,14 +26,15 @@ public class UserLogin {
 		
 		try {
 			user = userDao.findByUsername(username);
+			
+			System.out.println("Password from user " + password + " Password from object " + user.getUserPswd());
 			if (user == null)
 			{
 				return null;
 			}
-			if (user.getUserPswd() != password) {
-				return null;
-			}
-			if (user.getUserPswd() == password) {
+
+			if (password.equals(user.getUserPswd())) {
+				System.out.println("true");
 				user.setAuthenticate(true);
 				return user;
 			}
