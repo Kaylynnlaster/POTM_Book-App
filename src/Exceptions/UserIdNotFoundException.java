@@ -6,8 +6,4 @@ public class UserIdNotFoundException extends Exception{
         super("User id not found. Try again.");
     }
 
-    public UserIdNotFoundException(String str){
-        super(str);
-    }
-    
 }

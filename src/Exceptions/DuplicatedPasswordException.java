@@ -6,8 +6,4 @@ public class DuplicatedPasswordException extends Exception{
         super("Choose different password. It already exists.");
     }
 
-    public DuplicatedPasswordException(String str) {
-        super(str);
-    }
-
 }

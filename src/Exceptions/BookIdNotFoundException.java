@@ -6,8 +6,4 @@ public class BookIdNotFoundException extends Exception{
         super("Book Id not found. Try again.");
     }
 
-    public BookIdNotFoundException(String str) {
-        super(str);
-    }
-
 }

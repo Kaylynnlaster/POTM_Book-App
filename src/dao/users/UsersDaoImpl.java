@@ -13,7 +13,6 @@ import Exceptions.DuplicatedPasswordException;
 import Exceptions.DuplicatedUserNameException;
 import Exceptions.UserIdNotFoundException;
 import Exceptions.UserNotFoundException;
-import Exceptions.UserPswdNotFoundException;
 import Exceptions.UsernameNotFoundException;
 
 public class UsersDaoImpl implements UsersDao {
@@ -78,15 +77,17 @@ public class UsersDaoImpl implements UsersDao {
    public boolean update(Users user) throws UserNotFoundException {
       String sql = "Update users SET first_name=?, last_name=?, user_name=?, user_pswd=? WHERE user_id = ?;";
       try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
-         pstmt.setString(1, user.getFirst_name());
-         pstmt.setString(2, user.getLast_name());
-         pstmt.setString(3, user.getUser_name());
-         pstmt.setString(4, user.getUser_pswd());
-         pstmt.setInt(5, user.getUser_id());
-         int rows = pstmt.executeUpdate();
-         if (rows <= 0) {
+         pstmt.setString(1, user.getFirstName());
+         pstmt.setString(2, user.getLastName());
+         pstmt.setString(3, user.getUserName());
+         pstmt.setString(4, user.getUserPswd());
+         pstmt.setInt(5, user.getUserId());
+         int rowCount = pstmt.executeUpdate();
+         if (rowCount <= 0) {
             throw new UserNotFoundException();
-         }         
+         } else {
+            System.out.println(rowCount + " rows updated.");
+         }        
       } catch (SQLException e) {
 		   e.printStackTrace();
    	}
@@ -97,9 +98,11 @@ public class UsersDaoImpl implements UsersDao {
       String sql = "DELETE FROM users WHERE user_id = ?;";
       try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
          pstmt.setInt(1, id);
-         int rows = pstmt.executeUpdate();
-         if (rows <= 0) {
-            throw new UserIdNotFoundException(sql);
+         int rowCount = pstmt.executeUpdate();
+         if (rowCount <= 0) {
+            throw new UserIdNotFoundException();
+         } else {
+            System.out.println(rowCount + " rows deleted.");
          }
       } catch (SQLException e) {
 			e.printStackTrace();
@@ -107,15 +110,13 @@ public class UsersDaoImpl implements UsersDao {
       return true;
    }
 
-   private boolean userNameExists(String username) throws UsernameNotFoundException {
+   private boolean userNameExists(String username) {
       String sql = "SELECT * FROM users WHERE user_name = ?";
       try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
          pstmt.setString(1, username);
          ResultSet rs = pstmt.executeQuery();
          if (rs.next()){
             return true;
-         } else {
-            throw new UsernameNotFoundException(sql);
          }
       } catch (SQLException e) {
 			e.printStackTrace();
@@ -123,15 +124,13 @@ public class UsersDaoImpl implements UsersDao {
       return false;
     }
 
-   private boolean userPasswordExists(String pswd) throws UserPswdNotFoundException {
+   private boolean userPasswordExists(String pswd) {
       String sql = "SELECT * FROM users WHERE user_pswd = ?";
       try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
             pstmt.setString(1, pswd);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()){
                return true;
-            } else {
-               throw new UserPswdNotFoundException(sql);
             }
       } catch (SQLException e) {
 			e.printStackTrace();
@@ -139,24 +138,23 @@ public class UsersDaoImpl implements UsersDao {
       return false;
    }
 
-
-   public Users add(Users user) throws UsernameNotFoundException, UserPswdNotFoundException, DuplicatedUserNameException, DuplicatedPasswordException {
+   public Users add(Users user) throws DuplicatedUserNameException, DuplicatedPasswordException {
       
-      if (this.userNameExists(user.getUser_name())) {
+      if (this.userNameExists(user.getUserName())) {
          throw new DuplicatedUserNameException();
       }
 
-      if (this.userPasswordExists(user.getUser_pswd())) {
+      if (this.userPasswordExists(user.getUserPswd())) {
          throw new DuplicatedPasswordException();
       }
 
       String sql = "INSERT INTO users (first_name, last_name, user_name, user_pswd) VALUES (?, ?, ?, ?);";
       
       try (PreparedStatement pstmt = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS );) {
-         pstmt.setString(1, user.getFirst_name());
-         pstmt.setString(2, user.getLast_name());
-         pstmt.setString(3, user.getUser_name());
-         pstmt.setString(4, user.getUser_pswd());
+         pstmt.setString(1, user.getFirstName());
+         pstmt.setString(2, user.getLastName());
+         pstmt.setString(3, user.getUserName());
+         pstmt.setString(4, user.getUserPswd());
          int rowCount = pstmt.executeUpdate();
          System.out.println(rowCount + " rows added.");        
       } catch (SQLException e) {

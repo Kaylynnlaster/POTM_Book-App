@@ -6,8 +6,4 @@ public class DuplicatedUserNameException extends Exception{
         super("Choose different user name. It already exists.");
     }
 
-    public DuplicatedUserNameException(String str) {
-        super(str);
-    }
-    
 }

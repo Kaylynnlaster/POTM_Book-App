@@ -1,12 +1,9 @@
 package Exceptions;
 
-public class UserNotFound extends Exception{
+public class UserNotFoundException extends Exception{
     
-    public UserNotFound() {
+    public UserNotFoundException() {
         super("User not found. Try again.");
     }
-
-    public UserNotFound(String str) {
-        super(str);
-    }
+    
 }

@@ -2,7 +2,6 @@ package services;
 
 import java.sql.*;
 
-import connection.ConnectionManager;
 import dao.users.*;
 
 public class UserLogin {
@@ -29,10 +28,10 @@ public class UserLogin {
 			{
 				return null;
 			}
-			if (user.getUser_pswd() != password) {
+			if (user.getUserPswd() != password) {
 				return null;
 			}
-			if (user.getUser_pswd() == password) {
+			if (user.getUserPswd() == password) {
 				user.setAuthenticate(true);
 				return user;
 			}

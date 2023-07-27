@@ -1,4 +1,4 @@
-package dao.users_books;
+package dao.usersBooks;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Exceptions.BookIdNotFoundException;
+import Exceptions.DuplicatedUserIdBookIdException;
+import Exceptions.PageOverNumOfPagesException;
 import Exceptions.UserIdBookIdNotFoundException;
 import Exceptions.UserIdNotFoundException;
 import connection.ConnectionManager;
 
-public class UsersBooksDaoImpl implements  UsersBooksDao {
+public class UsersBooksDaoImpl implements UsersBooksDao {
 	private Connection connection = null;
 
 	@Override
@@ -29,33 +31,33 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 	}
 
 	@Override
-	public List<Users_Books> getAll() {
-	    List<Users_Books> users_books = new ArrayList<Users_Books>();
+	public List<UsersBooks> getAll() {
+	    List<UsersBooks> usersBooks = new ArrayList<UsersBooks>();
 	    String sql = "SELECT * FROM users_books";
 	    try {
-	        Statement stmt = this.connection.createStatement();
+	    	Statement stmt = this.connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(sql);
 	        while(rs.next()) {
-	        	users_books.add(new Users_Books(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+	        	usersBooks.add(new UsersBooks(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 	        }
 	    } catch (SQLException e) {
 			e.printStackTrace();
 	    }
-	    return users_books;
+	    return usersBooks;
 	}
 
 	@Override
-	public List<Users_Books> findBooksByUserId(int userId) throws UserIdNotFoundException {
-		List<Users_Books> users_books = new ArrayList<Users_Books>();
+	public List<UsersBooks> findBooksByUserId(int userId) throws UserIdNotFoundException {
+		List<UsersBooks> users_books = new ArrayList<UsersBooks>();
 		String sql = "SELECT * FROM users_books WHERE user_id = ?";
 	    try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
 	        pstmt.setInt(1, userId);
 	        ResultSet rs = pstmt.executeQuery();
-			if (!rs.next()){
-				throw new UserIdNotFoundException(sql);
+			if (!rs.isBeforeFirst()) {
+				throw new UserIdNotFoundException();
 			}
 	        while(rs.next()) {
-	            users_books.add(new Users_Books(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+	            users_books.add(new UsersBooks(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 	        }	
 	    } catch (SQLException e) {
 			e.printStackTrace();
@@ -64,17 +66,17 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 	}
 
 	@Override
-	public List<Users_Books> findUsersByBookId(int bookId) throws BookIdNotFoundException {
-		List<Users_Books> users_books = new ArrayList<Users_Books>();
+	public List<UsersBooks> findUsersByBookId(int bookId) throws BookIdNotFoundException {
+		List<UsersBooks> users_books = new ArrayList<UsersBooks>();
 		String sql = "SELECT * FROM users_books WHERE book_id = ?";
 	    try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
 	        pstmt.setInt(1, bookId);
 	        ResultSet rs = pstmt.executeQuery();
-			if (!rs.next()){
-				throw new BookIdNotFoundException(sql);
+			if (!rs.isBeforeFirst()) {
+				throw new BookIdNotFoundException();
 			}
 	        while(rs.next()) {
-	            users_books.add(new Users_Books(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+	            users_books.add(new UsersBooks(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 	        }	
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -83,17 +85,18 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 	}
 
 	@Override
-	public Users_Books findByUserIdBookId(int userId, int bookId) throws UserIdBookIdNotFoundException {
-		Users_Books users_books;
+	public UsersBooks findByUserIdBookId(int userId, int bookId) throws UserIdBookIdNotFoundException {
+		UsersBooks users_books;
 		String sql = "SELECT * FROM users_books WHERE user_id = ? and book_id = ?";
 	    try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
-            pstmt.setInt(1, bookId);
+            pstmt.setInt(1, userId);
+			pstmt.setInt(2, bookId);
             ResultSet rs = pstmt.executeQuery();
-            if (!rs.next()){
+            if (!rs.isBeforeFirst()) {
 				throw new UserIdBookIdNotFoundException();
 			}
             while(rs.next()) {
-           		users_books = (new Users_Books(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+           		users_books = (new UsersBooks(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
            		return users_books;
            	}	
         } catch (SQLException e) {
@@ -102,16 +105,40 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 		return null;
 	}
 
+	// Private method that gets the num of pages for specific book Id used inside update Pages read.
+	private int getNumOfPagesByBookId(int bookId) throws BookIdNotFoundException {
+		String sql = String.format("SELECT num_of_pages FROM books where book_id = %s", bookId);
+		 try {
+	    	Statement stmt = this.connection.createStatement();
+	        ResultSet rs = stmt.executeQuery(sql);
+	        if (rs.next()) {
+				return rs.getInt(1);
+			} else {
+				throw new BookIdNotFoundException();
+			}
+	    } catch (SQLException e) {
+			e.printStackTrace();
+	    }
+	    return -1;
+	}
+
+
 	@Override
-	public boolean updatePagesRead(int userId, int bookId, int pages) throws UserIdBookIdNotFoundException {
-		String sql = String.format("Update users_books SET pages_read = pages_read + %d where user_Id = ? AND book_Id = ?", pages);
+	public boolean updatePagesRead(int userId, int bookId, int pages) throws UserIdBookIdNotFoundException, BookIdNotFoundException, PageOverNumOfPagesException {
+		// Check if pages inputed exceeds numeber of pages for the book.
+		if (pages > getNumOfPagesByBookId(bookId)) {
+			throw new PageOverNumOfPagesException();
+		}
+		String sql = String.format("UPDATE users_books SET pages_read = %d WHERE user_Id = ? AND book_Id = ?", pages);
 	    try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
             pstmt.setInt(1, userId);	
             pstmt.setInt(2, bookId);
-            int rows = pstmt.executeUpdate();
-            if (rows <= 0) {
+            int rowCount = pstmt.executeUpdate();
+            if (rowCount <= 0) {
                 throw new UserIdBookIdNotFoundException();
-            } 
+            } else {
+				System.out.println(rowCount + " rows updated.");
+			}     
         } catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -124,17 +151,20 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 	    try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
 	        pstmt.setInt(1, userId);
 	        pstmt.setInt(2, bookId);
-	        int rows = pstmt.executeUpdate();
-	        if (rows <= 0) {
+	        int rowCount = pstmt.executeUpdate();
+	        if (rowCount <= 0) {
 	            throw new UserIdBookIdNotFoundException();
-	        }
+	        } else {
+				System.out.println(rowCount + " rows deleted.");
+			}
 	    } catch (SQLException e) {
 			e.printStackTrace();
 		} 
 	    return true;
 	}
 
-	private boolean exists(int userId, int bookId) throws UserIdBookIdNotFoundException{
+	// If users_books combination exists return true
+	private boolean exists(int userId, int bookId){
 		String sql = "SELECT * FROM users_books WHERE user_id = ? and book_id = ?";
 		try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
 		    pstmt.setInt(1, userId);
@@ -142,30 +172,29 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 		    ResultSet rs = pstmt.executeQuery();
 		    if (rs.next()) {
 				return true;
-		    } else {
-				throw new UserIdBookIdNotFoundException();
-			}
+		    }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
 
+	// Calls when user add books to planning to read section in the book progress track app.
 	@Override
-	public Users_Books add(int userId, int bookId) throws UserIdBookIdNotFoundException {
+	public UsersBooks add(int userId, int bookId) throws DuplicatedUserIdBookIdException {
         if (this.exists(userId, bookId)) {
-            throw new UserIdBookIdNotFoundException();
+            throw new DuplicatedUserIdBookIdException();
         }
-		String sql = "INSERT INTO users_books (user_id, book_id, pages_read) VALUES (?, ?, ?);";
+		String sql = "INSERT INTO users_books (user_id, book_id, pages_read) VALUES (?, ?, 0);";
 		try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
 			pstmt.setInt(1, userId);
 	        pstmt.setInt(2, bookId);
-	        pstmt.setInt(2, 0);
-	        pstmt.executeUpdate();  
+			int rowCount = pstmt.executeUpdate();
+			System.out.println(rowCount + " rows added.");  
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ( new Users_Books(userId, bookId, 0));
+		return (new UsersBooks(userId, bookId, 0));
 	}
 
 }
