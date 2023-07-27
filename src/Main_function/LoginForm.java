@@ -56,7 +56,6 @@ public class LoginForm extends JFrame {
 
                 if(currUser != null){
                     //change curr user or create new user based of userBookInfo
-                    
                     mainFrame userList = new mainFrame();
                     userList.initialize(currUser);
                     dispose();
