@@ -68,21 +68,22 @@ public class updateForm extends JFrame{
                 int numpgs = Integer.parseInt(pagesRead);
                 book = books.findByTitle(title);
                 System.out.println(currUser.getUser_id() + " " + book.getBook_id() +  " " + numpgs);
-                int  newProgress = UserBooks.addPagesRead(currUser.getUser_id(), book.getBook_id(), numpgs);
+                boolean newProgress = UserBooks.addPagesRead(currUser.getUser_id(), book.getBook_id(), numpgs);
 
-                if(currUser != null){
-                    //change curr user or create new user based of userBookInfo
-                    mainFrame userList = new mainFrame();
+                if(!newProgress){
+                    JOptionPane.showMessageDialog(updateForm.this,
+                            "Failed adding your pages",
+                            "Try again",
+                            JOptionPane.ERROR_MESSAGE);
+                    updateForm updateForm = new updateForm();
+                    updateForm.initialize(currUser);
+                    dispose();
+                }
+                else {
+                	mainFrame userList = new mainFrame();
                     userList.initialize(currUser);
                     dispose();
                 }
-//                else {
-//                    JOptionPane.showMessageDialog(LoginForm.this,
-//                            "Email or Password Invalid",
-//                            "Try again",
-//                            JOptionPane.ERROR_MESSAGE);
-//                }
-            
             }
 
         });

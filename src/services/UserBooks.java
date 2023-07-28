@@ -183,12 +183,23 @@ public class UserBooks {
 		}
 		return usersbooksDao.add(userId, bookId);
 	}
-	public static int addPagesRead(int userId, int bookId, int num)
+	public static boolean addPagesRead(int userId, int bookId, int num)
 	{
+		boolean success = false;
 		usersbooksDao = new UsersBooksDaoImpl();
+		booksDao = new BooksDaoImpl();
+		
 		Users_Books usersBook;
 		try {
 			usersbooksDao.establishConnection();
+			booksDao.establishConnection();
+			usersBook = usersbooksDao.findByUserIdBookId(userId, bookId);
+			Books book = booksDao.findById(bookId);
+			int newPages = num + usersBook.getPages_read();
+			if (newPages > book.getNum_of_pages())
+			{
+				return false;
+			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -196,12 +207,10 @@ public class UserBooks {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		boolean success = usersbooksDao.updatePagesRead(userId, bookId, num);
-		if (success) {
-			usersBook = usersbooksDao.findByUserIdBookId(userId, bookId);
-			return usersBook.getPages_read();
-		}
-		return 0;
+		
+		success = usersbooksDao.updatePagesRead(userId, bookId, num);
+
+		return success;
 	}
 	public static Users_Books newPlanning(int userId, int bookId)
 	{

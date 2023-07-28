@@ -84,7 +84,8 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 		Users_Books users_books;
 		String sql = "SELECT * FROM users_books WHERE user_id = ? and book_id = ?";
 	      try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
-              pstmt.setInt(1, bookId);
+	    	  pstmt.setInt(1, userId);
+              pstmt.setInt(2, bookId);
               ResultSet rs = pstmt.executeQuery();
               
               while(rs.next()) {
