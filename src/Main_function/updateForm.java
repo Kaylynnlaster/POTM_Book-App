@@ -1,16 +1,12 @@
 package Main_function;
 
 import java.awt.*;
-import java.util.List;
-import javax.swing.*;
 
-import Exceptions.BookIdNotFoundException;
-import Exceptions.BookTitleNotFoundException;
-import Exceptions.PageOverNumOfPagesException;
-import Exceptions.UserIdBookIdNotFoundException;
+import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import dao.books.Books;
 import dao.books.BooksDao;
@@ -23,7 +19,10 @@ public class updateForm extends JFrame{
     
     final private Font mainFont = new Font("Times new roman", Font.BOLD, 18);
     JTextField bookName;
-    JTextField page_read;
+    JTextField page_read;  
+    BooksDao books = new BooksDaoImpl();    
+    Books book;
+    
     
     public void initialize(Users currUser) {
         JLabel UpdateFormlb = new JLabel("Update Form", SwingConstants.CENTER);
@@ -55,30 +54,35 @@ public class updateForm extends JFrame{
         submitbtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                String title = bookName.getText();
+            	try {
+					books.establishConnection();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            	String title = bookName.getText();
                 String pagesRead = page_read.getText();
                 int numpgs = Integer.parseInt(pagesRead);
-                BooksDaoImpl booksDao = new BooksDaoImpl();
-                try {
-                    List<Books> books = booksDao.findByTitle(title);
-                    System.out.println(books);
-                    Books book = books.get(0);
-                    int id = book.getBookId();
-                    boolean  newProgress = UserBooks.addPagesRead(currUser.getUserId(), id, numpgs);
-                } catch (BookTitleNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                } catch (UserIdBookIdNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                } catch (BookIdNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                } catch (PageOverNumOfPagesException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                book = books.findByTitle(title);
+                System.out.println(currUser.getUser_id() + " " + book.getBook_id() +  " " + numpgs);
+                int  newProgress = UserBooks.addPagesRead(currUser.getUser_id(), book.getBook_id(), numpgs);
 
+                if(currUser != null){
+                    //change curr user or create new user based of userBookInfo
+                    mainFrame userList = new mainFrame();
+                    userList.initialize(currUser);
+                    dispose();
+                }
+//                else {
+//                    JOptionPane.showMessageDialog(LoginForm.this,
+//                            "Email or Password Invalid",
+//                            "Try again",
+//                            JOptionPane.ERROR_MESSAGE);
+//                }
+            
             }
 
         });

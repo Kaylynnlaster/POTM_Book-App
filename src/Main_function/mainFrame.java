@@ -1,22 +1,19 @@
 package Main_function;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.*;
-
-import Exceptions.BookIdNotFoundException;
-import Exceptions.UserIdNotFoundException;
-
 import java.util.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+import dao.books.Books;
 import dao.users.Users;
 import services.MasterTable;
 import services.UserBooks;
@@ -24,47 +21,56 @@ import services.UserLogin;
 
 public class mainFrame extends JFrame{
 
-    final private Font mainFont = new Font("Times new roman", Font.BOLD, 18);
     
-    public void initialize(Users currUser) throws BookIdNotFoundException, UserIdNotFoundException {
+	final private Font mainFont = new Font("Times new roman", Font.BOLD, 18);
+	final private Font titleFont = new Font("Times new roman", Font.BOLD, 20);
+    final private Font attributeFont = new Font("Times new roman", Font.BOLD, 16);
+    final private Font dataFont = new Font("Times new roman", Font.BOLD, 16);
+   
     
-    JLabel title = new JLabel("Your Books", SwingConstants.CENTER);
-    title.setFont(mainFont);
+    
+    
+    public void initialize(Users currUser) {
+    	
+    Books bookString = new Books();
+    
+    JLabel title = new JLabel(currUser.getFirst_name() + "'s Book Library", SwingConstants.CENTER);
+    title.setFont(titleFont);
+    title.setForeground(Color.BLUE);
 
     JLabel inProgress = new JLabel("In Progress:");
-    inProgress.setFont(mainFont);
-
+    inProgress.setFont(titleFont);
     
     //progress book list
-    // System.out.println("before first list created");
-    // List<MasterTable> inProgressBooks;
-	// inProgressBooks = UserBooks.getProgress(currUser.getUserId());
-    // System.out.println("after first list created");
+    System.out.println("before first list created");
+    List<MasterTable> inProgressBooks;
+	inProgressBooks = UserBooks.getProgress(currUser.getUser_id());
+    System.out.println("after first list created");
 
 
     JLabel completed = new JLabel("Completed: ");
-    completed.setFont(mainFont);
+    completed.setFont(titleFont);
 
     //completed list
    
     List<MasterTable> completedBooks;
-    completedBooks = UserBooks.getCompleted(currUser.getUserId());
+    completedBooks = UserBooks.getCompleted(currUser.getUser_id());
     System.out.println("after first list created");
 
 
     JLabel notStarted = new JLabel("Plan to Read:");
-    notStarted.setFont(mainFont);
+    notStarted.setFont(titleFont);
     
     //planning list
     List<MasterTable> planningBooks;
-	planningBooks = UserBooks.getPlanning(currUser.getUserId());
+	planningBooks = UserBooks.getPlanning(currUser.getUser_id());
 
     JButton btnLogout = new JButton("Log Out");
     btnLogout.setFont(mainFont);
     btnLogout.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserLogin.logout(currUser.getUserName());
+                UserLogin.logout(currUser.getUser_name());
                 dispose();
             }
 
@@ -110,31 +116,43 @@ public class mainFrame extends JFrame{
 
     BookPanel.add(inProgress);
     
-    // // Iterator iteratorProgress = inProgressBooks.iterator();
-    // while(iteratorProgress.hasNext()) {
-    //     JLabel bookp = new JLabel(iteratorProgress.next().toString());
-    //     bookp.setFont(mainFont);
-    //     BookPanel.add(bookp);
-    // }
+    JLabel booka = new JLabel(bookString.toHtmlStringAttributesStarted());
+    booka.setFont(attributeFont);
+    BookPanel.add(booka); 
     
-
+    
+    for (MasterTable i : inProgressBooks )
+     {
+        JLabel bookp = new JLabel(i.toHtmlStringDataStarted());
+        bookp.setFont(dataFont);
+        BookPanel.add(bookp);
+    }
+    
     BookPanel.add(notStarted);
-    Iterator iteratorPlan = planningBooks.iterator();
-    while(iteratorPlan.hasNext()) {
-        JLabel bookns = new JLabel(iteratorPlan.next().toString());
-        bookns.setFont(mainFont);
-        BookPanel.add(bookns);
-    }
-
-
+    booka = new JLabel(bookString.toHtmlStringAttributesNotStarted());
+    booka.setFont(attributeFont);
+    BookPanel.add(booka);     
+        
+    for (MasterTable i : planningBooks )
+    {
+       JLabel bookp = new JLabel(i.toHtmlStringDataNotStarted());
+       bookp.setFont(dataFont);
+       BookPanel.add(bookp);
+   }
+    
     BookPanel.add(completed);
+    booka = new JLabel(bookString.toHtmlStringAttributesCompleted());
+    booka.setFont(attributeFont);
+    BookPanel.add(booka);     
+      
+    
+    for (MasterTable i : completedBooks )
+    {
+       JLabel bookp = new JLabel(i.toHtmlStringDataCompleted());
+       bookp.setFont(dataFont);
+       BookPanel.add(bookp);
+   }
 
-    Iterator iteratorCom = completedBooks.iterator();
-    while(iteratorCom.hasNext()) {
-        JLabel bookc = new JLabel(iteratorCom.next().toString());
-        bookc.setFont(mainFont);
-        BookPanel.add(bookc);
-    }
 
     BtnPanel.add(btnUpdate);
     BtnPanel.add(btnAdd);

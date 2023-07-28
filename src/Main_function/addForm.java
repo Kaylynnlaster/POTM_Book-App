@@ -1,20 +1,15 @@
 package Main_function;
 
 import java.awt.*;
-import java.util.List;
-import javax.swing.*;
 
-import Exceptions.BookIdNotFoundException;
-import Exceptions.BookTitleNotFoundException;
-import Exceptions.DuplicatedUserIdBookIdException;
-import Exceptions.PageOverNumOfPagesException;
-import Exceptions.UserIdBookIdNotFoundException;
-import Exceptions.UserIdNotFoundException;
+import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import dao.books.Books;
+import dao.books.BooksDao;
 import dao.books.BooksDaoImpl;
 import dao.users.Users;
 import services.UserBooks;
@@ -22,6 +17,8 @@ import services.UserBooks;
 public class addForm extends JFrame{
     final private Font mainFont = new Font("Times new roman", Font.BOLD, 18);
     JTextField bookName;
+    BooksDao books = new BooksDaoImpl();    
+    Books book; 
     
     public void initialize(Users currUser) {
         JLabel AddFormlb = new JLabel("Add Form", SwingConstants.CENTER);
@@ -53,31 +50,20 @@ public class addForm extends JFrame{
         submitbtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+            	try {
+					books.establishConnection();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
                 String title = bookName.getText();
-                //call a findbookbytitle function and set it eqaual to a value
-                //add book to the user_books database using the newPlanning function in UserBooks
-                BooksDaoImpl booksDao = new BooksDaoImpl();
-                try {
-                    List<Books> books = booksDao.findByTitle(title);
-                    System.out.println(books);
-                    Books book = books.get(0);
-                    int id = book.getBookId();
-                    UserBooks.newPlanning(currUser.getUserId(), id);
-                } catch (BookTitleNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                } catch (DuplicatedUserIdBookIdException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-
+                book = books.findByTitle(title);
+                UserBooks.newPlanning(currUser.getUser_id(), book.getBook_id());
                 mainFrame userList = new mainFrame();
-                try {
-                    userList.initialize(currUser);
-                } catch (BookIdNotFoundException | UserIdNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                userList.initialize(currUser);
                 dispose();
             
             }
@@ -90,12 +76,7 @@ public class addForm extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainFrame userList = new mainFrame();
-                try {
-                    userList.initialize(currUser);
-                } catch (BookIdNotFoundException | UserIdNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                userList.initialize(currUser);
                 dispose();
             
             }

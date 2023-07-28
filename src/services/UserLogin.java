@@ -2,6 +2,7 @@ package services;
 
 import java.sql.*;
 
+import connection.ConnectionManager;
 import dao.users.*;
 
 public class UserLogin {
@@ -27,13 +28,13 @@ public class UserLogin {
 		try {
 			user = userDao.findByUsername(username);
 			
-			System.out.println("Password from user " + password + " Password from object " + user.getUserPswd());
+			System.out.println("Password from user " + password + " Password from object " + user.getUser_pswd());
 			if (user == null)
 			{
 				return null;
 			}
 
-			if (password.equals(user.getUserPswd())) {
+			if (password.equals(user.getUser_pswd())) {
 				System.out.println("true");
 				user.setAuthenticate(true);
 				return user;

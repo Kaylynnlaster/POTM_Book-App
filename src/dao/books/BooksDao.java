@@ -2,10 +2,9 @@ package dao.books;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
-import Exceptions.BookIdNotFoundException;
-import Exceptions.BookTitleNotFoundException;
-import Exceptions.DuplicatedBookException;
+import dao.users.Users;
 
 public interface BooksDao {
    void establishConnection() throws ClassNotFoundException, SQLException;
@@ -14,14 +13,13 @@ public interface BooksDao {
 
    List<Books> getAll();
 
-   Books findById(int book_id) throws BookIdNotFoundException;
+   Books findById(int book_id);
 
-   List<Books> findByTitle(String title) throws BookTitleNotFoundException;
+   boolean update(Books book);
 
-   boolean update(Books book) throws BookIdNotFoundException;
+   boolean delete(int book_id);
 
-   boolean delete(int book_id) throws BookIdNotFoundException;
+   Books add(Books book);
 
-   Books add(Books book) throws BookTitleNotFoundException, DuplicatedBookException;
-
+   Books findByTitle(String title);
 }

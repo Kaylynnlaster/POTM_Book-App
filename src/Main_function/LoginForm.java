@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Exceptions.BookIdNotFoundException;
-import Exceptions.UserIdNotFoundException;
 import services.UserLogin;
 import dao.users.Users;
 
@@ -59,12 +57,7 @@ public class LoginForm extends JFrame {
                 if(currUser != null){
                     //change curr user or create new user based of userBookInfo
                     mainFrame userList = new mainFrame();
-                    try {
-                        userList.initialize(currUser);
-                    } catch (BookIdNotFoundException | UserIdNotFoundException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
-                    }
+                    userList.initialize(currUser);
                     dispose();
                 }
                 else {
