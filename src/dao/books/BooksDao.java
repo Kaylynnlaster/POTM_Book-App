@@ -21,5 +21,5 @@ public interface BooksDao {
 
    Books add(Books book);
 
-   List<Books> findByTitle(String title);
+   Books findByTitle(String title);
 }

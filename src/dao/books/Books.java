@@ -14,6 +14,8 @@ public class Books {
       this.author_last_name = author_last_name;
       this.num_of_pages = num_of_pages;
    }
+   public Books() {
+	   }
 
    public int getBook_id() {
       return this.book_id;
@@ -58,4 +60,62 @@ public class Books {
    public String toString() {
       return "\nbook_id=" + this.book_id + ", title=" + this.title + ", author_first_name=" + this.author_first_name + ", author_last_name=" + this.author_last_name + ", num_of_pages=" + this.num_of_pages;
    }
+// Helper method to convert a string to Title Case
+private String toTitleCase(String input) {
+    StringBuilder titleCase = new StringBuilder();
+    boolean nextTitleCase = true;
+
+    for (char c : input.toCharArray()) {
+        if (Character.isSpaceChar(c) || c == '-') {
+            nextTitleCase = true;
+        } else if (nextTitleCase) {
+            c = Character.toTitleCase(c);
+            nextTitleCase = false;
+        } else {
+            c = Character.toLowerCase(c);
+        }
+        titleCase.append(c);
+    }
+
+    return titleCase.toString();
+}
+   public String toHtmlStringAttributesStarted() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("<html><pre>");
+	    sb.append(String.format("<font color='blue'>%-24s%-25s%-18s%-10s</b></font><br>",
+	            toTitleCase("Title"), toTitleCase("Author_Name"),
+	            toTitleCase("Pages Read"),
+	            toTitleCase("Percentage")));
+	    sb.append("</pre></html>");
+	    return sb.toString();
+	}
+   public String toHtmlStringAttributesNotStarted() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("<html><pre>");
+	    sb.append(String.format("<font color='blue'>%-24s%-25s%-18s</b></font><br>",
+	            toTitleCase("Title"), toTitleCase("Author_Name"),
+	            toTitleCase("Number of Pages")));
+	    sb.append("</pre></html>");
+	    return sb.toString();
+	}
+   public String toHtmlStringAttributesCompleted() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("<html><pre>");
+	    sb.append(String.format("<font color='blue'>%-24s%-25s%-18s</b></font><br>",
+	            toTitleCase("Title"), toTitleCase("Author_Name"),
+	            toTitleCase("Number of Pages")));
+	    sb.append("</pre></html>");
+	    return sb.toString();
+	}  
+   public String toHtmlStringDataNotStarted() {
+      StringBuilder sb = new StringBuilder();
+      sb.append("<html><pre>");
+  
+      String authorFullName = toTitleCase(author_last_name + ", " + author_first_name);
+      sb.append(String.format("<font color='lightblue'>%-24s%-25s%-18d</font><br>",
+              title, authorFullName, num_of_pages));
+      sb.append("</pre></html>");
+      return sb.toString();
+  }
+
 }

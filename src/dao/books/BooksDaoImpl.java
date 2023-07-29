@@ -32,7 +32,7 @@ public class BooksDaoImpl implements BooksDao {
       String sql = "SELECT * FROM books";
 
       try {
-         Statement stmt = this.connection.createStatement();
+         Statement stmt = connection.createStatement();
          ResultSet rs = stmt.executeQuery(sql);
 
          while(rs.next()) {
@@ -140,7 +140,7 @@ public class BooksDaoImpl implements BooksDao {
      return null;
    }
 
-   public List<Books> findByTitle(String title) {
+   public Books findByTitle(String title) {
 	      List<Books> books = new ArrayList<Books>();
 	      String sql = "SELECT * FROM books WHERE title = ? ";
 
@@ -156,6 +156,6 @@ public class BooksDaoImpl implements BooksDao {
 			e.printStackTrace();
 	     }
 
-	      return books;
+	      return books.get(0);
    }
 }

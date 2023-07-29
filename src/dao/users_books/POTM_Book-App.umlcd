@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_1GaM0Cy0Ee6yLIYUOkoNFg">
+  <modelElement href="POTM_Book-App.uml#_1eYA4Cy0Ee6yLIYUOkoNFg"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_1qOEgCy0Ee6yLIYUOkoNFg" source="_1qOrkCy0Ee6yLIYUOkoNFg">
+    <modelElement href="POTM_Book-App.uml#_1hHL0Cy0Ee6yLIYUOkoNFg"/>
+    <stereotypes xmi:id="_1qOEgSy0Ee6yLIYUOkoNFg" name="Reference">
+      <modelElement href="POTM_Book-App.uml#_1hHy4Cy0Ee6yLIYUOkoNFg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_1qOEgiy0Ee6yLIYUOkoNFg" text=""/>
+    <sourceRole xmi:id="_1qOEgyy0Ee6yLIYUOkoNFg" aggregationKind="NONE" name="">
+      <modelElement href="POTM_Book-App.uml#_1hHL0Sy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qOEhCy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOEhSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_1qOEhiy0Ee6yLIYUOkoNFg" aggregationKind="NONE" name="connection" navigable="true">
+      <modelElement href="POTM_Book-App.uml#_1g5JYCy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qOEhyy0Ee6yLIYUOkoNFg" label="-"/>
+      <cardinality xmi:id="_1qOEiCy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_1qr-kCy0Ee6yLIYUOkoNFg" sourceAnchor="202.0,0.0" targetAnchor="205.0,204.0" target="_1qzTUCy0Ee6yLIYUOkoNFg" source="_1qB3QCy0Ee6yLIYUOkoNFg">
+    <modelElement href="POTM_Book-App.uml#_1hBsQCy0Ee6yLIYUOkoNFg"/>
+    <nameVisual xmi:id="_1qtMsCy0Ee6yLIYUOkoNFg" text="">
+      <visualProperties xmi:id="_2IFFMCy0Ee6yLIYUOkoNFg" position="-14.139596329045133,-5.953042554302812"/>
+    </nameVisual>
+    <sourceRole xmi:id="_1qtMsSy0Ee6yLIYUOkoNFg" aggregationKind="NONE" name="all" navigable="true">
+      <modelElement href="POTM_Book-App.uml#_1e1T4Cy0Ee6yLIYUOkoNFg"/>
+      <visualProperties xmi:id="_2IDQASy0Ee6yLIYUOkoNFg" position="-24.747776352907806,-73.05677528398115"/>
+      <visibility xmi:id="_1qyFMCy0Ee6yLIYUOkoNFg" label="~"/>
+      <cardinality xmi:id="_1qxeICy0Ee6yLIYUOkoNFg" label="1..*" max="-1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_1qtMsiy0Ee6yLIYUOkoNFg" aggregationKind="NONE" name="">
+      <modelElement href="POTM_Book-App.uml#_1hBsQSy0Ee6yLIYUOkoNFg"/>
+      <visualProperties xmi:id="_2IFsQCy0Ee6yLIYUOkoNFg" position="-19.073798855890658,40.53412596636274"/>
+      <visibility xmi:id="_1qyFMiy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qyFMSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_1qsloCy0Ee6yLIYUOkoNFg" sourceAnchor="14.0,0.0" targetAnchor="0.0,102.0" dashed="true" superClass="_1qzTUCy0Ee6yLIYUOkoNFg" subClass="_1qOrkCy0Ee6yLIYUOkoNFg">
+    <modelElement href="POTM_Book-App.uml#_1gruASy0Ee6yLIYUOkoNFg"/>
+    <bendpoints xmi:id="_2IDQACy0Ee6yLIYUOkoNFg" sourceY="-370" targetX="-15"/>
+  </edges>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_1qB3QCy0Ee6yLIYUOkoNFg" name="Users_Books" associationsOut="_1qr-kCy0Ee6yLIYUOkoNFg">
+    <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+    <visualProperties xmi:id="_1qB3QSy0Ee6yLIYUOkoNFg" position="30.0,30.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_1qB3Qiy0Ee6yLIYUOkoNFg" label="+"/>
+    <attributes xmi:id="_1qB3Qyy0Ee6yLIYUOkoNFg" name="user_id">
+      <modelElement href="POTM_Book-App.uml#_1g6-kCy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qB3RCy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qB3RSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <type xmi:id="_1qB3Riy0Ee6yLIYUOkoNFg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_1qB3Ryy0Ee6yLIYUOkoNFg" name="book_id">
+      <modelElement href="POTM_Book-App.uml#_1g7loCy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qB3SCy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qB3SSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <type xmi:id="_1qB3Siy0Ee6yLIYUOkoNFg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_1qB3Syy0Ee6yLIYUOkoNFg" name="pages_read">
+      <modelElement href="POTM_Book-App.uml#_1g7loSy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qB3TCy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qB3TSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <type xmi:id="_1qB3Tiy0Ee6yLIYUOkoNFg" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_1qB3Tyy0Ee6yLIYUOkoNFg" name="Users_Books">
+      <modelElement href="POTM_Book-App.uml#_1fsPgCy0Ee6yLIYUOkoNFg"/>
+      <keywords xmi:id="_1qB3UCy0Ee6yLIYUOkoNFg" keyword="create"/>
+      <visibility xmi:id="_1qB3USy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qB3Uiy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qB3Uyy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1fs2kiy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qB3VCy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qB3VSy0Ee6yLIYUOkoNFg" name="user_id">
+        <modelElement href="POTM_Book-App.uml#_1fsPgSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qB3Viy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qB3Vyy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qB3WCy0Ee6yLIYUOkoNFg" name="book_id">
+        <modelElement href="POTM_Book-App.uml#_1fsPgiy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qB3WSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qB3Wiy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qB3Wyy0Ee6yLIYUOkoNFg" name="pages_read">
+        <modelElement href="POTM_Book-App.uml#_1fsPgyy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qB3XCy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qB3XSy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_1qOrkCy0Ee6yLIYUOkoNFg" name="UsersBooksDaoImpl" associationsOut="_1qOEgCy0Ee6yLIYUOkoNFg" generalizations="_1qsloCy0Ee6yLIYUOkoNFg">
+    <modelElement href="POTM_Book-App.uml#_1fJc8Cy0Ee6yLIYUOkoNFg"/>
+    <visualProperties xmi:id="_1qOrkSy0Ee6yLIYUOkoNFg" position="-2.0,243.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_1qOrkiy0Ee6yLIYUOkoNFg" label="+"/>
+    <attributes xmi:id="_1qOrkyy0Ee6yLIYUOkoNFg" defaultValue="null" name="connection">
+      <modelElement href="POTM_Book-App.uml#_1g5JYCy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOrlCy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1g6XgCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOrlSy0Ee6yLIYUOkoNFg" label="-"/>
+      <cardinality xmi:id="_1qOrliy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <type xmi:id="_1qOrlyy0Ee6yLIYUOkoNFg" name="Connection">
+        <modelElement href="POTM_Book-App.uml#_1gjLICy0Ee6yLIYUOkoNFg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_1qOrmCy0Ee6yLIYUOkoNFg" name="establishConnection">
+      <modelElement href="POTM_Book-App.uml#_1fLSICy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOrmSy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fL5MCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOrmiy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1fNHUCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOrmyy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOrnCy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_1qOrnSy0Ee6yLIYUOkoNFg" name="closeConnection">
+      <modelElement href="POTM_Book-App.uml#_1fNuYCy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOrniy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fOVcCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOrnyy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1fO8gCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOroCy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOroSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_1qOroiy0Ee6yLIYUOkoNFg" name="getAll">
+      <modelElement href="POTM_Book-App.uml#_1fO8giy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOroyy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fQKoCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOrpCy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1fQxsCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOrpSy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOrpiy0Ee6yLIYUOkoNFg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_1qOrpyy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1fPjkCy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qOrqCy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_1qOrqSy0Ee6yLIYUOkoNFg" name="findBooksByUserId">
+      <modelElement href="POTM_Book-App.uml#_1fRYwCy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOrqiy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fTN8Cy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOrqyy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1fT1ACy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOrrCy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOrrSy0Ee6yLIYUOkoNFg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_1qOrriy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1fRYwiy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qOrryy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qOrsCy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1fRYwSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOrsSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOrsiy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qOrsyy0Ee6yLIYUOkoNFg" name="findUsersByBookId">
+      <modelElement href="POTM_Book-App.uml#_1fUcECy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOrtCy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fVDISy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOrtSy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1fVqMCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOrtiy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOrtyy0Ee6yLIYUOkoNFg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_1qOruCy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1fUcEiy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qOruSy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qOruiy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1fUcESy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOruyy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOrvCy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qOrvSy0Ee6yLIYUOkoNFg" name="findByUserIdBookId">
+      <modelElement href="POTM_Book-App.uml#_1fWRQCy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOrviy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fXfYCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOrvyy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1fZ7oCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOrwCy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOrwSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qOrwiy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1gs8ICy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qOrwyy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qOrxCy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1fWRQSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOrxSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOrxiy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qOrxyy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1fW4UCy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOryCy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOrySy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qOryiy0Ee6yLIYUOkoNFg" name="updatePagesRead">
+      <modelElement href="POTM_Book-App.uml#_1fbw0Cy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOryyy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fdmACy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOrzCy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1ffbMCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOrzSy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOrziy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qOrzyy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1fc-8Cy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qOr0Cy0Ee6yLIYUOkoNFg" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qOr0Sy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1fcX4Cy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr0iy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr0yy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qOr1Cy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1fcX4Sy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr1Sy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr1iy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qOr1yy0Ee6yLIYUOkoNFg" name="pages">
+        <modelElement href="POTM_Book-App.uml#_1fcX4iy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr2Cy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr2Sy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qOr2iy0Ee6yLIYUOkoNFg" name="delete">
+      <modelElement href="POTM_Book-App.uml#_1fgCQCy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOr2yy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fgpUSy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOr3Cy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1fhQYCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOr3Sy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOr3iy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qOr3yy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1fgpUCy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qOr4Cy0Ee6yLIYUOkoNFg" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qOr4Sy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1fgCQSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr4iy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr4yy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qOr5Cy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1fgCQiy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr5Sy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr5iy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qOr5yy0Ee6yLIYUOkoNFg" name="exists">
+      <modelElement href="POTM_Book-App.uml#_1fh3cCy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qOr6Cy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOr6Sy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qOr6iy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1fh3cyy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qOr6yy0Ee6yLIYUOkoNFg" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qOr7Cy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1fh3cSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr7Sy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr7iy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qOr7yy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1fh3ciy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr8Cy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr8Sy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qOr8iy0Ee6yLIYUOkoNFg" name="add">
+      <modelElement href="POTM_Book-App.uml#_1fiegCy0Ee6yLIYUOkoNFg"/>
+      <stereotypes xmi:id="_1qOr8yy0Ee6yLIYUOkoNFg" name="LegacyStyledElement">
+        <modelElement href="POTM_Book-App.uml#_1fjsoCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_1qOr9Cy0Ee6yLIYUOkoNFg" name="Annotations">
+        <modelElement href="POTM_Book-App.uml#_1fk6wCy0Ee6yLIYUOkoNFg"/>
+      </stereotypes>
+      <visibility xmi:id="_1qOr9Sy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qOr9iy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qOr9yy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1gs8ISy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qOr-Cy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qOr-Sy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1fjFkCy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr-iy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr-yy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qOr_Cy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1fjFkSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qOr_Sy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qOr_iy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_1qntICy0Ee6yLIYUOkoNFg" name="ClassNotFoundException">
+    <modelElement href="POTM_Book-App.uml#_1g0Q4Cy0Ee6yLIYUOkoNFg"/>
+    <visualProperties xmi:id="_1qntISy0Ee6yLIYUOkoNFg" position="496.0,202.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_1qntIiy0Ee6yLIYUOkoNFg" name="Reference">
+      <modelElement href="POTM_Book-App.uml#_1g2GECy0Ee6yLIYUOkoNFg"/>
+    </stereotypes>
+    <visibility xmi:id="_1qntIyy0Ee6yLIYUOkoNFg" label="+"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_1qqJYCy0Ee6yLIYUOkoNFg" name="SQLException">
+    <modelElement href="POTM_Book-App.uml#_1gQQMCy0Ee6yLIYUOkoNFg"/>
+    <visualProperties xmi:id="_1qqJYSy0Ee6yLIYUOkoNFg" position="-130.0,104.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_1qqJYiy0Ee6yLIYUOkoNFg" name="Reference">
+      <modelElement href="POTM_Book-App.uml#_1gReUCy0Ee6yLIYUOkoNFg"/>
+    </stereotypes>
+    <visibility xmi:id="_1qqJYyy0Ee6yLIYUOkoNFg" label="+"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:InterfaceVisual" xmi:id="_1qzTUCy0Ee6yLIYUOkoNFg" name="UsersBooksDao" associationsIn="_1qr-kCy0Ee6yLIYUOkoNFg" subclassedBy="_1qsloCy0Ee6yLIYUOkoNFg">
+    <modelElement href="POTM_Book-App.uml#_1expgCy0Ee6yLIYUOkoNFg"/>
+    <visualProperties xmi:id="_1qzTUSy0Ee6yLIYUOkoNFg" position="27.0,-229.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_1qzTUiy0Ee6yLIYUOkoNFg" label="+"/>
+    <attributes xmi:id="_1qzTUyy0Ee6yLIYUOkoNFg" name="all">
+      <modelElement href="POTM_Book-App.uml#_1e1T4Cy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzTVCy0Ee6yLIYUOkoNFg" label="~"/>
+      <cardinality xmi:id="_1qzTVSy0Ee6yLIYUOkoNFg" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_1qzTViy0Ee6yLIYUOkoNFg" name="Users_Books">
+        <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_1qzTVyy0Ee6yLIYUOkoNFg" name="establishConnection">
+      <modelElement href="POTM_Book-App.uml#_1ey3oCy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzTWCy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qzTWSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_1qzTWiy0Ee6yLIYUOkoNFg" name="closeConnection">
+      <modelElement href="POTM_Book-App.uml#_1e0s0Cy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzTWyy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qzTXCy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_1qzTXSy0Ee6yLIYUOkoNFg" name="findBooksByUserId">
+      <modelElement href="POTM_Book-App.uml#_1e2iACy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzTXiy0Ee6yLIYUOkoNFg" label="~"/>
+      <cardinality xmi:id="_1qzTXyy0Ee6yLIYUOkoNFg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_1qzTYCy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1e2iAiy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qzTYSy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qzTYiy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1e2iASy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTYyy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTZCy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qzTZSy0Ee6yLIYUOkoNFg" name="findUsersByBookId">
+      <modelElement href="POTM_Book-App.uml#_1e3wICy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzTZiy0Ee6yLIYUOkoNFg" label="~"/>
+      <cardinality xmi:id="_1qzTZyy0Ee6yLIYUOkoNFg" label="1..*" max="-1" min="1"/>
+      <outParameters xmi:id="_1qzTaCy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1e4XMCy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qzTaSy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qzTaiy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1e3wISy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTayy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTbCy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qzTbSy0Ee6yLIYUOkoNFg" name="findByUserIdBookId">
+      <modelElement href="POTM_Book-App.uml#_1e4-QCy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzTbiy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qzTbyy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qzTcCy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1gikECy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qzTcSy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qzTciy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1e4-QSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTcyy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTdCy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qzTdSy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1e4-Qiy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTdiy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTdyy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qzTeCy0Ee6yLIYUOkoNFg" name="updatePagesRead">
+      <modelElement href="POTM_Book-App.uml#_1e6MYCy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzTeSy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qzTeiy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qzTeyy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1e6zcSy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qzTfCy0Ee6yLIYUOkoNFg" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qzTfSy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1e6MYSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTfiy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTfyy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qzTgCy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1e6MYiy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTgSy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTgiy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qzTgyy0Ee6yLIYUOkoNFg" name="pages">
+        <modelElement href="POTM_Book-App.uml#_1e6zcCy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzThCy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzThSy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qzThiy0Ee6yLIYUOkoNFg" name="delete">
+      <modelElement href="POTM_Book-App.uml#_1e7agCy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzThyy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qzTiCy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qzTiSy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1e8BkCy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qzTiiy0Ee6yLIYUOkoNFg" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qzTiyy0Ee6yLIYUOkoNFg" name="userId">
+        <modelElement href="POTM_Book-App.uml#_1e7agSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTjCy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTjSy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qzTjiy0Ee6yLIYUOkoNFg" name="bookId">
+        <modelElement href="POTM_Book-App.uml#_1e7agiy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTjyy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTkCy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_1qzTkSy0Ee6yLIYUOkoNFg" name="add">
+      <modelElement href="POTM_Book-App.uml#_1e8BkSy0Ee6yLIYUOkoNFg"/>
+      <visibility xmi:id="_1qzTkiy0Ee6yLIYUOkoNFg" label="+"/>
+      <cardinality xmi:id="_1qzTkyy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_1qzTlCy0Ee6yLIYUOkoNFg">
+        <modelElement href="POTM_Book-App.uml#_1gikESy0Ee6yLIYUOkoNFg"/>
+        <type xmi:id="_1qzTlSy0Ee6yLIYUOkoNFg" name="Users_Books">
+          <modelElement href="POTM_Book-App.uml#_1fpMMCy0Ee6yLIYUOkoNFg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_1qzTliy0Ee6yLIYUOkoNFg" name="user_id">
+        <modelElement href="POTM_Book-App.uml#_1e8ooCy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTlyy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTmCy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_1qzTmSy0Ee6yLIYUOkoNFg" name="book_id">
+        <modelElement href="POTM_Book-App.uml#_1e8ooSy0Ee6yLIYUOkoNFg"/>
+        <cardinality xmi:id="_1qzTmiy0Ee6yLIYUOkoNFg" label="1" max="1" min="1"/>
+        <type xmi:id="_1qzTmyy0Ee6yLIYUOkoNFg" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>

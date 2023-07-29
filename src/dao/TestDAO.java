@@ -4,13 +4,9 @@ import dao.books.BooksDao;
 import dao.books.BooksDaoImpl;
 import dao.users.UsersDao;
 import dao.users.UsersDaoImpl;
-import services.MasterTable;
-import services.UserBooks;
-
 //import dao.users_books.Users_BooksDao;
 //import dao.users_books.Users_BooksDaoImpl;
 import java.sql.SQLException;
-import java.util.List;
 
 public class TestDAO {
 	
@@ -19,23 +15,20 @@ public class TestDAO {
  */
 public static void main(String[] args) {
       UsersDao users = new UsersDaoImpl();
-      BooksDao books = new BooksDaoImpl();  
-      UserBooks userbooks = new UserBooks();
-      List<MasterTable> master;
+      BooksDao books = new BooksDaoImpl();      
       try {
 		users.establishConnection();
 		books.establishConnection();
 		
-//		master = UserBooks.getAllBooksForUser(1);
-//		System.out.println(master);
+		
 //		//Test Users getAll
 //		System.out.println("Get all Users"); 
 //		System.out.println(users.getAll()); 
 //		
 //		Test findByUsername
-//		System.out.println();
-//		System.out.println("Find by Id  username = John122"); 
-//		System.out.println(users.findByUsername("John123")); 
+		System.out.println();
+		System.out.println("Find by Id  username = John122"); 
+		System.out.println(users.findByUsername("John123")); 
 		
 		
 		//Test Books findByTitle

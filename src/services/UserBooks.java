@@ -17,8 +17,6 @@ import dao.users_books.Users_Books;
 public class UserBooks {
 	
 	public static Users_Books userbook;
-	public static Users user;
-	public static Books book;
 	public static MasterTable master;
 	public static MasterTable planning;
 	public static MasterTable inProgress;
@@ -29,6 +27,19 @@ public class UserBooks {
 	public static UsersBooksDao usersbooksDao;
 	
 	
+	public static Books getBookIdbyTitle(String title) {
+		booksDao = new BooksDaoImpl();
+		try {
+			booksDao.establishConnection();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return booksDao.findByTitle(title);
+	}
 	public static List<MasterTable> getMaster(int userId) {
 		usersDao = new UsersDaoImpl();
 		booksDao = new BooksDaoImpl();
@@ -76,7 +87,7 @@ public class UserBooks {
 		}
 		userbooks = usersbooksDao.findBooksByUserId(userId);
 		for (Users_Books b : userbooks) {
-		Books current_book = booksDao.findById(book.getBook_id());
+		Books current_book = booksDao.findById(b.getBook_id());
 		Users current_user = usersDao.findById(userId);
 		if (b.getPages_read() == 0) {
 			planning.add(new MasterTable(current_book, current_user, b)); }
@@ -104,9 +115,9 @@ public class UserBooks {
 		}
 		userbooks = usersbooksDao.findBooksByUserId(userId);
 		for (Users_Books b : userbooks) {
-		Books current_book = booksDao.findById(book.getBook_id());
+		Books current_book = booksDao.findById(b.getBook_id());
 		Users current_user = usersDao.findById(userId);
-		if (b.getPages_read() < book.getNum_of_pages()) {
+		if ((b.getPages_read() < current_book.getNum_of_pages())&&(b.getPages_read() >0)) {
 			inProgress.add(new MasterTable(current_book, current_user, b)); }
 		}
 		
@@ -132,13 +143,31 @@ public class UserBooks {
 		}
 		userbooks = usersbooksDao.findBooksByUserId(userId);
 		for (Users_Books b : userbooks) {
-		Books current_book = booksDao.findById(book.getBook_id());
+		Books current_book = booksDao.findById(b.getBook_id());
 		Users current_user = usersDao.findById(userId);
-		if (b.getPages_read() == book.getNum_of_pages()) {
+		if (b.getPages_read() == current_book.getNum_of_pages()) {
 			completed.add(new MasterTable(current_book, current_user, b)); }
 		}
 		
 		return completed;
+	}
+	public static Books findbookbytitle (String title) {
+		booksDao = new BooksDaoImpl();
+
+		List<Books> books = new ArrayList<Books>();
+		List<MasterTable> completed = new ArrayList<MasterTable>();
+		
+		try {
+			booksDao.establishConnection();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return booksDao.findByTitle(title);
 	}
 	public static Users_Books newBook(int userId, int bookId)
 	{
@@ -156,9 +185,21 @@ public class UserBooks {
 	}
 	public static boolean addPagesRead(int userId, int bookId, int num)
 	{
+		boolean success = false;
 		usersbooksDao = new UsersBooksDaoImpl();
+		booksDao = new BooksDaoImpl();
+		
+		Users_Books usersBook;
 		try {
 			usersbooksDao.establishConnection();
+			booksDao.establishConnection();
+			usersBook = usersbooksDao.findByUserIdBookId(userId, bookId);
+			Books book = booksDao.findById(bookId);
+			int newPages = num + usersBook.getPages_read();
+			if (newPages > book.getNum_of_pages())
+			{
+				return false;
+			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -166,7 +207,10 @@ public class UserBooks {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return usersbooksDao.updatePagesRead(userId, bookId, num);
+		
+		success = usersbooksDao.updatePagesRead(userId, bookId, num);
+
+		return success;
 	}
 	public static Users_Books newPlanning(int userId, int bookId)
 	{
@@ -182,9 +226,6 @@ public class UserBooks {
 		}
 		return usersbooksDao.add(userId, bookId);
 	}
-	
-	
-	
-	
+
 
 }

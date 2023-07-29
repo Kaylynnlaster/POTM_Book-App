@@ -84,7 +84,8 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 		Users_Books users_books;
 		String sql = "SELECT * FROM users_books WHERE user_id = ? and book_id = ?";
 	      try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
-              pstmt.setInt(1, bookId);
+	    	  pstmt.setInt(1, userId);
+              pstmt.setInt(2, bookId);
               ResultSet rs = pstmt.executeQuery();
               
               while(rs.next()) {
@@ -102,10 +103,11 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
 	@Override
 	public boolean updatePagesRead(int userId, int bookId, int pages) {
 		
-		String sql = "Update users_books SET pages_read = pages_read + pages where user_Id = ? AND book_Id = ?";
+		String sql = "Update users_books SET pages_read = pages_read + ? where user_Id = ? AND book_Id = ?";
 	     try (PreparedStatement pstmt = this.connection.prepareStatement(sql);){
-              pstmt.setInt(1, userId);	
-              pstmt.setInt(2, bookId);
+	    	  pstmt.setInt(1, pages);	
+	    	  pstmt.setInt(2, userId);	
+              pstmt.setInt(3, bookId);
               int rows = pstmt.executeUpdate();
               if (rows <= 0) {
                   return false;
@@ -157,10 +159,11 @@ public class UsersBooksDaoImpl implements  UsersBooksDao {
             return null;
         }
 		 String sql = "INSERT INTO users_books (user_id, book_id, pages_read) VALUES (?, ?, ?);";
+		 System.out.println("insert users books");
 		 try (PreparedStatement pstmt = this.connection.prepareStatement(sql);) {
 			 pstmt.setInt(1, userId);
 	         pstmt.setInt(2, bookId);
-	         pstmt.setInt(2, 0);
+	         pstmt.setInt(3, 0);
 	         pstmt.executeUpdate();
 	         
 		 } catch (SQLException e) {

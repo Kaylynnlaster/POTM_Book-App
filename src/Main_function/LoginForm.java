@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Services.UserLogin;
+import services.UserLogin;
 import dao.users.Users;
 
 
@@ -50,10 +50,12 @@ public class LoginForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String email = tfEmail.getText();
                 String password = String.valueOf(pfPassword.getPassword());
-                
-                Users currUser = UserLogin.getAuthenticatedUser(email, password);
+                System.out.println(email + " " + password);
+
+                Users currUser = UserLogin.login(email, password);
 
                 if(currUser != null){
+                    //change curr user or create new user based of userBookInfo
                     mainFrame userList = new mainFrame();
                     userList.initialize(currUser);
                     dispose();

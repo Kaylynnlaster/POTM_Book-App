@@ -90,14 +90,83 @@ public class MasterTable {
 	public void setPages_read(int pages_read) {
 		this.pages_read = pages_read;
 	}
-	@Override
-	public String toString() {
-		return "MasterTable [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name
-				+ ", user_name=" + user_name + ", book_id=" + book_id + ", title=" + title + ", author_first_name="
-				+ author_first_name + ", author_last_name=" + author_last_name + ", num_of_pages=" + num_of_pages
-				+ ", pages_read=" + pages_read + "]";
-	}
 	
+
+
+
+// Helper method to convert a string to Title Case
+private String toTitleCase(String input) {
+    StringBuilder titleCase = new StringBuilder();
+    boolean nextTitleCase = true;
+
+    for (char c : input.toCharArray()) {
+        if (Character.isSpaceChar(c) || c == '-') {
+            nextTitleCase = true;
+        } else if (nextTitleCase) {
+            c = Character.toTitleCase(c);
+            nextTitleCase = false;
+        } else {
+            c = Character.toLowerCase(c);
+        }
+        titleCase.append(c);
+    }
+
+    return titleCase.toString();
+}
+@Override
+public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("MasterTable:\n");
+    sb.append(String.format("%-8s %-12s %-11s %-13s %-8s %-24s %-17s %-16s %-13s %-11s%n",
+            toTitleCase("user_id"), toTitleCase("first_name"), toTitleCase("last_name"),
+            toTitleCase("user_name"), toTitleCase("book_id"), toTitleCase("title"),
+            toTitleCase("author_first_name"), toTitleCase("author_last_name"),
+            toTitleCase("num_of_pages"), toTitleCase("pages_read")));
+    sb.append(String.format("%-8d %-12s %-11s %-13s %-8d %-24s %-17s %-16s %-13d %-11d%n",
+            user_id, first_name, last_name, user_name, book_id,
+            title, author_first_name, author_last_name, num_of_pages, pages_read));
+    return sb.toString();
+}
+
+public String toHtmlStringDataStarted() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("<html><pre>");
+
+    String authorFullName = toTitleCase(author_last_name + ", " + author_first_name);
+    double percentage = (pages_read != 0) ? (double) pages_read / num_of_pages  * 100 : 0;
+    sb.append(String.format("<font color='lightblue'>%-24s%-25s%-18d%-6.2f%%<br></font>",
+            title, authorFullName, pages_read, percentage));
+    sb.append("</pre></html>");
+    return sb.toString();
+}
+public String toHtmlStringDataNotStarted() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("<html><pre>");
+
+    String authorFullName = toTitleCase(author_last_name + ", " + author_first_name);
+    sb.append(String.format("<font color='lightblue'>%-24s%-25s%-18d</font><br>",
+            title, authorFullName, num_of_pages));
+    sb.append("</pre></html>");
+    return sb.toString();
+}
+public String toHtmlStringDataCompleted() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("<html><pre>");
+
+    String authorFullName = toTitleCase(author_last_name + ", " + author_first_name);
+    sb.append(String.format("<font color='lightblue'>%-24s%-25s%-18d</font><br>",
+            title, authorFullName, num_of_pages));
+    sb.append("</pre></html>");
+    return sb.toString();
+}
+
+
+
+
+
+
+
+
 	   
 	   
 }
