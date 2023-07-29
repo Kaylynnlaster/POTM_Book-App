@@ -90,6 +90,16 @@ public class updateForm extends JFrame{
 
         JButton cancelbtn = new JButton("Cancel");
         cancelbtn.setFont(mainFont);
+        cancelbtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame userList = new mainFrame();
+                userList.initialize(currUser);
+                dispose();
+            
+            }
+
+        });
 
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(1,2,10,0));

@@ -32,7 +32,7 @@ public class BooksDaoImpl implements BooksDao {
       String sql = "SELECT * FROM books";
 
       try {
-         Statement stmt = this.connection.createStatement();
+         Statement stmt = connection.createStatement();
          ResultSet rs = stmt.executeQuery(sql);
 
          while(rs.next()) {

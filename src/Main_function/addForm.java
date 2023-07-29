@@ -13,6 +13,7 @@ import dao.books.Books;
 import dao.books.BooksDao;
 import dao.books.BooksDaoImpl;
 import dao.users.Users;
+import services.GetAllBooks;
 import services.UserBooks;
 
 public class addForm extends JFrame{
@@ -27,10 +28,6 @@ public class addForm extends JFrame{
 
         JLabel allBooks = new JLabel("All Books:");
         allBooks.setFont(mainFont);
-
-        BooksDaoImpl bookserv = new BooksDaoImpl();
-        List<Books> allBooksList;
-        allBooksList = bookserv.getAll();
 
         JLabel bookTitle = new JLabel("Enter Book Title:");
         bookTitle.setFont(mainFont);
@@ -50,6 +47,7 @@ public class addForm extends JFrame{
         BookPanel.setLayout(new GridLayout(0,1,10,10));
 
         BookPanel.add(allBooks);
+        List<Books> allBooksList = GetAllBooks.getAll();
         for(Books i : allBooksList){
             JLabel booka = new JLabel(i.toHtmlStringDataNotStarted());
             booka.setFont(mainFont);
