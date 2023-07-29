@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Exceptions.UserIdNotFound;
+import Exceptions.UserPswdNotFound;
 import services.UserLogin;
 import dao.users.Users;
 
@@ -52,9 +54,10 @@ public class LoginForm extends JFrame {
                 String password = String.valueOf(pfPassword.getPassword());
                 System.out.println(email + " " + password);
 
-                Users currUser = UserLogin.login(email, password);
-
-                if(currUser != null){
+                Users currUser;
+                try {
+                    currUser = UserLogin.login(email, password);
+                    if(currUser != null){
                     //change curr user or create new user based of userBookInfo
                     mainFrame userList = new mainFrame();
                     userList.initialize(currUser);
@@ -66,6 +69,12 @@ public class LoginForm extends JFrame {
                             "Try again",
                             JOptionPane.ERROR_MESSAGE);
                 }
+                } catch (UserIdNotFound | UserPswdNotFound e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+
+                
             
             }
 
