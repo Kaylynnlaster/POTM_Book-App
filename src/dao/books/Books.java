@@ -106,6 +106,16 @@ private String toTitleCase(String input) {
 	            toTitleCase("Number of Pages")));
 	    sb.append("</pre></html>");
 	    return sb.toString();
-	}   
+	}  
+   public String toHtmlStringDataNotStarted() {
+      StringBuilder sb = new StringBuilder();
+      sb.append("<html><pre>");
+  
+      String authorFullName = toTitleCase(author_last_name + ", " + author_first_name);
+      sb.append(String.format("<font color='lightblue'>%-24s%-25s%-18d</font><br>",
+              title, authorFullName, num_of_pages));
+      sb.append("</pre></html>");
+      return sb.toString();
+  }
 
 }

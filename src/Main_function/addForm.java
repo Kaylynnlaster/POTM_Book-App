@@ -3,6 +3,7 @@ package Main_function;
 import java.awt.*;
 
 import javax.swing.*;
+import java.util.List;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +28,10 @@ public class addForm extends JFrame{
         JLabel allBooks = new JLabel("All Books:");
         allBooks.setFont(mainFont);
 
+        BooksDaoImpl bookserv = new BooksDaoImpl();
+        List<Books> allBooksList;
+        allBooksList = bookserv.getAll();
+
         JLabel bookTitle = new JLabel("Enter Book Title:");
         bookTitle.setFont(mainFont);
 
@@ -40,10 +45,16 @@ public class addForm extends JFrame{
         AddPanel.add(bookTitle);
         AddPanel.add(bookName);
 
+
         JPanel BookPanel = new JPanel();
         BookPanel.setLayout(new GridLayout(0,1,10,10));
 
         BookPanel.add(allBooks);
+        for(Books i : allBooksList){
+            JLabel booka = new JLabel(i.toHtmlStringDataNotStarted());
+            booka.setFont(mainFont);
+            BookPanel.add(booka);
+        }
 
         JButton submitbtn = new JButton("Update");
         submitbtn.setFont(mainFont);
