@@ -17,8 +17,12 @@ import services.GetAllBooks;
 import services.UserBooks;
 
 public class addForm extends JFrame{
-    //Creates a times new roman font for the display
+	//Creates the different fonts
     final private Font mainFont = new Font("Times new roman", Font.BOLD, 18);
+	final private Font titleFont = new Font("Times new roman", Font.BOLD, 20);
+    final private Font attributeFont = new Font("Times new roman", Font.BOLD, 16);
+    final private Font dataFont = new Font("Times new roman", Font.BOLD, 16);
+    
     //Creates a text field for user input
     JTextField bookName;
     //Creates a new BooksDao object
@@ -28,13 +32,25 @@ public class addForm extends JFrame{
     
     //Creates the actual display
     public void initialize(Users currUser) {
+    	
+    	try {
+			books.establishConnection();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	book = new Books();
         //Creates a label for the form
-        JLabel AddFormlb = new JLabel("Add Form", SwingConstants.CENTER);
-        AddFormlb.setFont(mainFont);
-
+        JLabel AddFormlb = new JLabel("What new book would you like to read", SwingConstants.CENTER);
+        AddFormlb.setFont(titleFont);
+        AddFormlb.setForeground(Color.BLUE);
+        
         //Creates a label for the section to diplay all books
-        JLabel allBooks = new JLabel("All Books:");
-        allBooks.setFont(mainFont);
+        JLabel allBooks = new JLabel(book.toHtmlStringAttributesAddForm());
+        allBooks.setFont(attributeFont);
 
         //Creates a label for the text field
         JLabel bookTitle = new JLabel("Enter Book Title:");
@@ -62,8 +78,8 @@ public class addForm extends JFrame{
         BookPanel.add(allBooks);
         List<Books> allBooksList = GetAllBooks.getAll();
         for(Books i : allBooksList){
-            JLabel booka = new JLabel(i.toHtmlStringDataNotStarted());
-            booka.setFont(mainFont);
+            JLabel booka = new JLabel(i.toHtmlStringDataAddForm());
+            booka.setFont(dataFont);
             BookPanel.add(booka);
         }
 
@@ -74,15 +90,6 @@ public class addForm extends JFrame{
         submitbtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-            	try {
-					books.establishConnection();
-				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
                 String title = bookName.getText();
                 book = books.findByTitle(title);
                 UserBooks.newPlanning(currUser.getUser_id(), book.getBook_id());

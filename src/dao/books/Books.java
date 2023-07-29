@@ -91,6 +91,26 @@ private String toTitleCase(String input) {
 
     return titleCase.toString();
 }
+//Turns the data into a string to better display the user information on the GUI on Add Books form
+public String toHtmlStringAttributesAddForm() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("<html><pre>");
+	    sb.append(String.format("<font color='blue'>%-45s%-25s%-18s</b></font><br>",
+	            toTitleCase("Title"), toTitleCase("Author_Name"),
+	            toTitleCase("Number of Pages")));
+	    sb.append("</pre></html>");
+	    return sb.toString();
+	}
+public String toHtmlStringDataAddForm() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("<html><pre>");
+
+    String authorFullName = toTitleCase(author_last_name + ", " + author_first_name);
+    sb.append(String.format("<font color='lightblue'>%-45s%-25s%-18d</font><br>",
+            title, authorFullName, num_of_pages));
+    sb.append("</pre></html>");
+    return sb.toString();
+}
 //Turns the data into a string to better display the unser information on the GUI
    public String toHtmlStringAttributesStarted() {
 	    StringBuilder sb = new StringBuilder();
