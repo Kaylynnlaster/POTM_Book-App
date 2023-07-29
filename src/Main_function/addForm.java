@@ -17,35 +17,48 @@ import services.GetAllBooks;
 import services.UserBooks;
 
 public class addForm extends JFrame{
+    //Creates a times new roman font for the display
     final private Font mainFont = new Font("Times new roman", Font.BOLD, 18);
+    //Creates a text field for user input
     JTextField bookName;
-    BooksDao books = new BooksDaoImpl();    
+    //Creates a new BooksDao object
+    BooksDao books = new BooksDaoImpl();   
+    //Creates a new book object 
     Books book; 
     
+    //Creates the actual display
     public void initialize(Users currUser) {
+        //Creates a label for the form
         JLabel AddFormlb = new JLabel("Add Form", SwingConstants.CENTER);
         AddFormlb.setFont(mainFont);
 
+        //Creates a label for the section to diplay all books
         JLabel allBooks = new JLabel("All Books:");
         allBooks.setFont(mainFont);
 
+        //Creates a label for the text field
         JLabel bookTitle = new JLabel("Enter Book Title:");
         bookTitle.setFont(mainFont);
 
+        //Creates the text field 
         bookName = new JTextField();
         bookName.setFont(mainFont);
 
+        //Creates a panel to add the book adding information to
         JPanel AddPanel = new JPanel();
         AddPanel.setLayout(new GridLayout(0,1,10,10));
 
+        //Adds the book information
         AddPanel.add(AddFormlb);
         AddPanel.add(bookTitle);
         AddPanel.add(bookName);
 
-
+        //Creates a panel to add all of the book information to
         JPanel BookPanel = new JPanel();
         BookPanel.setLayout(new GridLayout(0,1,10,10));
 
+        //for loop to iterate through a list of all books and display them to the
+        //Book panel above. uses the Get all books service
         BookPanel.add(allBooks);
         List<Books> allBooksList = GetAllBooks.getAll();
         for(Books i : allBooksList){
@@ -54,6 +67,8 @@ public class addForm extends JFrame{
             BookPanel.add(booka);
         }
 
+        //Create a submit button that establishes a connection and then updates
+        //The users_book information for that specific user
         JButton submitbtn = new JButton("Update");
         submitbtn.setFont(mainFont);
         submitbtn.addActionListener(new ActionListener(){
@@ -79,6 +94,7 @@ public class addForm extends JFrame{
 
         });
 
+        //Cancel button created to pop back up the users information
         JButton cancelbtn = new JButton("Cancel");
         cancelbtn.setFont(mainFont);
         cancelbtn.addActionListener(new ActionListener(){
@@ -92,15 +108,18 @@ public class addForm extends JFrame{
 
         });
 
+        //Creating a button for the panels and adding them
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(1,2,10,0));
         buttonsPanel.add(submitbtn);
         buttonsPanel.add(cancelbtn);
 
-
+        //Adding everything to the display in proper order 
         add(AddPanel,BorderLayout.NORTH);
         add(BookPanel, BorderLayout.CENTER);
         add(buttonsPanel, BorderLayout.SOUTH);
+
+        //Creating the actual display
         setTitle("Add Book!");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(500, 650);
