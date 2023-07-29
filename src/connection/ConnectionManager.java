@@ -8,7 +8,7 @@ public class ConnectionManager {
 	//Creating private variables that include the information for the database we want to use
 	private static final String URL = "jdbc:mysql://localhost:3306/book_progress";
 	private static final String USERNAME = "root";
-	private static final String PASSWORD = "JavaDev23!#%";
+	private static final String PASSWORD = "root";
 	//creating a null connection 
 	private static Connection connection = null;
 	
