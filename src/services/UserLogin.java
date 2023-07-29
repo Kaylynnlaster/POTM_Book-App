@@ -2,6 +2,8 @@ package services;
 
 import java.sql.*;
 
+import Exceptions.UserIdNotFound;
+import Exceptions.UserPswdNotFound;
 import connection.ConnectionManager;
 import dao.users.*;
 
@@ -10,7 +12,8 @@ public class UserLogin {
 	public static Users user;
 	public static UsersDao userDao;
 	
-	public static Users login(String username, String password) {
+	//checks login and password entered from JLabel form.  returns user class if login is successful
+	public static Users login(String username, String password) throws UserIdNotFound, UserPswdNotFound {
 		System.out.println("UserLogin method  ");
 		System.out.println("LoginForm email:  " + username + "LoginForm password:  " + password);
 		
@@ -33,19 +36,25 @@ public class UserLogin {
 			{
 				return null;
 			}
-
-			if (password.equals(user.getUser_pswd())) {
+			try {
+				if (password.equals(user.getUser_pswd())) {
 				System.out.println("true");
 				user.setAuthenticate(true);
 				return user;
 			}
+			}
+			catch(Throwable e){
+				throw new UserPswdNotFound();
+			}
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new UserIdNotFound();
 		}
 		
 		return null;
 	}
+	
+	//returns null user class to logout
 	public static Users logout(String username)
 	{
 		return null;

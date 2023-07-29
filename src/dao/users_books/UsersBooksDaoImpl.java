@@ -1,5 +1,6 @@
 package dao.users_books;
 
+import java.awt.print.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 import connection.ConnectionManager;
+import dao.books.Books;
+import dao.books.BooksDaoImpl;
 import dao.users.Users;
 
 public class UsersBooksDaoImpl implements  UsersBooksDao {
