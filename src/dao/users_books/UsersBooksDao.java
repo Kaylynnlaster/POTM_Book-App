@@ -3,6 +3,8 @@ package dao.users_books;
 import java.sql.SQLException;
 import java.util.List;
 
+// Interface for the users DAO that hold the abstract methods to be
+// implemented in the UsersDaoImpl
 public interface UsersBooksDao {
 	   void establishConnection() throws ClassNotFoundException, SQLException;
 
@@ -11,7 +13,9 @@ public interface UsersBooksDao {
 	   List<Users_Books> getAll();
 
 	   List<Users_Books> findBooksByUserId(int userId);
+
 	   List<Users_Books> findUsersByBookId(int bookId);
+	   
 	   Users_Books findByUserIdBookId(int userId, int bookId);
 	   
 	   boolean updatePagesRead(int userId, int bookId, int pages);

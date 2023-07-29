@@ -3,6 +3,8 @@ package dao.users;
 import java.sql.SQLException;
 import java.util.List;
 
+// Interface for the users DAO that hold the abstract methods to be
+// implemented in the UsersDaoImpl
 public interface UsersDao {
    void establishConnection() throws ClassNotFoundException, SQLException;
 
