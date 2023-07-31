@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import dao.users.Users;
 
+//Interface for the Books DAO that hold the abstract methods to be
+//implemented in the BooksDaoImpl
 public interface BooksDao {
    void establishConnection() throws ClassNotFoundException, SQLException;
 
@@ -21,5 +23,5 @@ public interface BooksDao {
 
    Books add(Books book);
 
-   List<Books> findByTitle(String title);
+   Books findByTitle(String title);
 }

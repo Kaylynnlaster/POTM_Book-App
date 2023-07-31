@@ -10,7 +10,10 @@ import java.sql.SQLException;
 
 public class TestDAO {
 	
-   public static void main(String[] args) {
+   /**
+ * @param args
+ */
+public static void main(String[] args) {
       UsersDao users = new UsersDaoImpl();
       BooksDao books = new BooksDaoImpl();      
       try {
@@ -22,16 +25,16 @@ public class TestDAO {
 //		System.out.println("Get all Users"); 
 //		System.out.println(users.getAll()); 
 //		
-//		//Test findById
-//		System.out.println();
-//		System.out.println("Find by Id  userId = 5"); 
-//		System.out.println(users.findById(5)); 
+//		Test findByUsername
+		System.out.println();
+		System.out.println("Find by Id  username = John122"); 
+		System.out.println(users.findByUsername("John123")); 
 		
 		
 		//Test Books findByTitle
-		System.out.println("Books");
-		System.out.println("Find by title The Great Gatsby"); 
-		System.out.println(books.findByTitle("The Great Gatsby")); 
+//		System.out.println("Books");
+//		System.out.println("Find by title The Great Gatsby"); 
+//		System.out.println(books.findByTitle("The Great Gatsby")); 
 		
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
